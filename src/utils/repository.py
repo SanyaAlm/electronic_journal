@@ -39,7 +39,10 @@ class SQLAlchemyRepository(AbstractRepository):
     async def detail(self, id_: int):
         async with async_session_maker() as session:
             result = await session.execute(select(self.model).filter(self.model.id == id_))
-            db_student = result.scalar_one()
+
+            db_student = result.scalar_one_or_none()
+            if db_student is None:
+                raise HTTPException(status_code=404, detail="Not found!")
 
             return db_student
 
@@ -47,7 +50,7 @@ class SQLAlchemyRepository(AbstractRepository):
         async with async_session_maker() as session:
             result = await session.get(self.model, id_)
             if result is None:
-                raise HTTPException(status_code=404, detail="Student not found!")
+                raise HTTPException(status_code=404, detail="Not found!")
 
             for attr, value in data.dict().items():
                 setattr(result, attr, value)
@@ -59,7 +62,7 @@ class SQLAlchemyRepository(AbstractRepository):
         async with async_session_maker() as session:
             result = await session.get(self.model, id_)
             if result is None:
-                raise HTTPException(status_code=404, detail="Student not found!")
+                raise HTTPException(status_code=404, detail="Not found!")
 
             await session.delete(result)
             await session.commit()

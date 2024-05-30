@@ -15,4 +15,4 @@ RUN poetry config virtualenvs.create false && poetry install --no-dev
 COPY . /app
 ENV PYTHONPATH=/app:/app/src
 ENV PORT=8001
-CMD ["poetry", "run", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8001"]
+CMD ["poetry", "run", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]
