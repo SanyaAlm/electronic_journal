@@ -13,7 +13,7 @@ class AbstractRepository(ABC):
         pass
 
     @abstractmethod
-    async def update(self, id_):
+    async def detail(self, id_):
         pass
 
     @abstractmethod
