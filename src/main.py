@@ -1,5 +1,5 @@
 import fastapi
-from app.routers import student_router, score_router
+from src.routers import student_router, score_router
 
 app = fastapi.FastAPI()
 

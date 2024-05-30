@@ -5,5 +5,5 @@ class ScoreBase(BaseModel):
     grade: int = Field(ge=1, le=10)
 
 
-class ScoreCreate(ScoreBase):
+class ScoreCreateUpdate(ScoreBase):
     student_id: int
