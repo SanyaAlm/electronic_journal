@@ -12,10 +12,10 @@ Poetry
 ### 1. Создание файла окружения 
 Создайте файл `.env` в папке `electronic_journal` с следующими данными.  
 Пример данных:  
-DB_USER=postgres
+DB_USER=postgres  
 DB_PASSWORD=4342  
 DB_HOST=db  
-DB_PORT=5432
+DB_PORT=5432  
 DB_NAME=electronic_journal
 
 ### 2. Установка зависимостей:
